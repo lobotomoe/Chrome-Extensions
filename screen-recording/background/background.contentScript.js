@@ -48,6 +48,8 @@ function RecordRTC_Extension(config) {
         enableCamera: false,
         enableMicrophone: false,
         fixVideoSeekingIssues: false,
+        height: 1080,
+        width: 1920,
     };
 
     var startCallback = function() {
@@ -66,6 +68,8 @@ function RecordRTC_Extension(config) {
         'enableCamera',
         'enableMicrophone',
         'fixVideoSeekingIssues',
+        'height',
+        'width',
     ];
 
     window.addEventListener('message', function(event) {

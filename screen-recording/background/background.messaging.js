@@ -40,6 +40,8 @@ chrome.runtime.onConnect.addListener(function(port) {
                 enableCamera = message['enableCamera'] === true;
                 enableSpeakers = message['enableSpeakers'] === true;
                 fixVideoSeekingIssues = message['fixVideoSeekingIssues'] === true;
+                width = Number.isInteger(message['width']) ? message['width'] : 1920;
+                height = Number.isInteger(message['height']) ? message['height'] : 1080;
 
                 startRecordingCallback = function(file) {
                     port.postMessage({
@@ -56,6 +58,7 @@ chrome.runtime.onConnect.addListener(function(port) {
                     enableScreen: enableScreen ? 'true' : 'false',
                     enableSpeakers: enableSpeakers ? 'true' : 'false',
                     fixVideoSeekingIssues: fixVideoSeekingIssues ? 'true' : 'false',
+                    videoResolutions: `${width}x${height}`,
                     isRecording: 'true'
                 }, function() {
                     getUserConfigs();
