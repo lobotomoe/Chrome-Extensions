@@ -12,8 +12,8 @@ function captureTabUsingTabCapture(isNoAudio) {
             videoConstraints: {
                 mandatory: {
                     chromeMediaSource: 'tab',
-                    maxWidth: 1920,
-                    maxHeight: 1080
+                    maxWidth: videoResolutions.split('x')[0],
+                    maxHeight: videoResolutions.split('x')[1],
                 }
             },
             audioConstraints: isNoAudio === true ? false : {
