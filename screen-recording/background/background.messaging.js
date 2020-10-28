@@ -41,7 +41,9 @@ chrome.runtime.onConnect.addListener(function (port) {
         enableCamera = message["enableCamera"] === true;
         enableSpeakers = message["enableSpeakers"] === true;
         fixVideoSeekingIssues = message["fixVideoSeekingIssues"] === true;
-        bitsPerSecond = message["bitsPerSecond"] === 100000;
+        bitsPerSecond = Number.isInteger(message["bitsPerSecond"])
+          ? message["bitsPerSecond"]
+          : 100000;
         width = Number.isInteger(message["width"]) ? message["width"] : 1920;
         height = Number.isInteger(message["height"]) ? message["height"] : 1080;
 
