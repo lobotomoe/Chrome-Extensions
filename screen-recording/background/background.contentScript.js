@@ -92,7 +92,7 @@ function RecordRTC_Extension(config) {
     }
 
     if (event.data.stoppedRecording === true) {
-      stopCallback(dataURItoBlob(event.data.file));
+      stopCallback(event.data.file);
     }
   });
 

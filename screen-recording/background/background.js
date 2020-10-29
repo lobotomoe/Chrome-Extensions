@@ -10,6 +10,7 @@ function gotStream(stream) {
   var options = {
     type: "video",
     disableLogs: false,
+    timeSlice: 1000,
   };
 
   if (!videoCodec) {

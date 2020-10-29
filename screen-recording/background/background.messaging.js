@@ -83,15 +83,12 @@ chrome.runtime.onConnect.addListener(function (port) {
     if (message.stopRecording) {
       if (message.RecordRTC_Extension) {
         stopRecordingCallback = function (file) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            port.postMessage({
-              messageFromContentScript1234: true,
-              stoppedRecording: true,
-              file: e.target.result,
-            });
-          };
-          reader.readAsDataURL(file);
+          var blob_url = window.URL.createObjectURL(file);
+          port.postMessage({
+            messageFromContentScript1234: true,
+            stoppedRecording: true,
+            file: blob_url,
+          });
         };
       }
 
